@@ -4,63 +4,48 @@
 
         <div class="add_form">
             <form v-on:submit.prevent="submitSobrevivente">
-                <input
-                type="text"
-                class="form-control"
-                placeholder="Nome"
-                v-model="nome"
-            />
-            <input
-                type="text"
-                class="form-control"
-                placeholder="Idade"
-                v-model="idade"
-            />
-            <input
-                type="text"
-                class="form-control"
-                placeholder="Sexo"
-                v-model="sexo"
-            />
-            <input
-                type="text"
-                class="form-control"
-                placeholder="latitude"
-                v-model="latitude"
-            />
-            <input
-                type="text"
-                class="form-control"
-                placeholder="longitude"
-                v-model="longitude"
-            />
-            <input
-                type="text"
-                class="form-control"
-                placeholder="infectado"
-                v-model="infectado"
-            />
-            <button type="submit" class="btn btn-primary">
-                {{ isEditing ? "Edit Sobrevivente" : "Add Sobrevivente" }}
-            </button>
+                <input type="text" class="form-control" placeholder="Nome" v-model="nome" />
+                <input type="text" class="form-control" placeholder="Idade" v-model="idade" />
+                <input type="text" class="form-control" placeholder="Sexo" v-model="sexo" />
+                <input type="text" class="form-control" placeholder="latitude" v-model="latitude" />
+                <input type="text" class="form-control" placeholder="longitude" v-model="longitude" />
+                <button type="submit" class="btn btn-primary">
+                    {{ isEditing ? "Edit Sobrevivente" : "Add Sobrevivente" }}
+                </button>
             </form>
         </div>
 
         <div class="list">
-            <ul class="list_content">
-                <li v-for="sobrevivente in sobreviventes" :key="sobrevivente.id">
-                    <h4>{{ sobrevivente.nome }}</h4>
-                    <h4>{{ sobrevivente.idade }}</h4>
-                    <h4>{{ sobrevivente.sexo }}</h4>
-                    <h4>{{ sobrevivente.latitude }}</h4>
-                    <h4>{{ sobrevivente.longitude }}</h4>
-                    <h4>{{ sobrevivente.infectado }}</h4>
-                    <div class="list_buttons">
+            <table class="list_content">
+                <tr>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Sexo</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Infectado</th>
+                    <th>Item</th>
+                    <th>Botão</th>
+                </tr>
+                <tr v-for="sobrevivente in sobreviventes" :key="sobrevivente.id">
+                    <td>{{ sobrevivente.nome }}</td>
+                    <td>{{ sobrevivente.idade }}</td>
+                    <td>{{ sobrevivente.sexo }}</td>
+                    <td>{{ sobrevivente.latitude }}</td>
+                    <td>{{ sobrevivente.longitude }}</td>
+                    <input type="checkbox" v-model="sobrevivente.infectado" />
+                    <template v-if="sobrevivente.items.length">
+                        <td>
+                            <div v-for="item in sobrevivente.items">{{ item.nome }}:{{ item.pontos }} pontos</div>
+                        </td>
+                    </template>
+                    <td v-else>Sem Item</td>
+                    <td class="list_buttons">
                         <button @click="editSobrevivente(sobrevivente)">Editar</button>
                         <button @click="deleteSobrevivente(sobrevivente)">Deletar</button>
-                    </div>
-                </li>
-            </ul>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </template>
@@ -76,7 +61,7 @@ export default {
             sexo: "",
             latitude: "",
             longitude: "",
-            infectador: "",
+            infectado: "",
             id: "",
             isEditing: false,
         };
@@ -138,7 +123,7 @@ export default {
                 console.log(error);
             }
         },
-        async editSobrevivente(sobrevivente){
+        async editSobrevivente(sobrevivente) {
             try {
                 this.isEditing = true;
                 this.nome = sobrevivente.nome;
@@ -152,8 +137,8 @@ export default {
                 console.log(error);
             }
         },
-        async deleteSobrevivente(sobrevivente){
-            if (!confirm("Você tem certeza?")){
+        async deleteSobrevivente(sobrevivente) {
+            if (!confirm("Você tem certeza?")) {
                 return;
             }
             await this.$http.delete(`http://127.0.0.1:8000/api/sobreviventes/${sobrevivente.id}/`);
@@ -166,4 +151,34 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+table {
+    border: 1px solid black;
+    table-layout: fixed;
+    width: 200px;
+}
+
+th,
+td {
+    border: 1px solid black;
+    width: 100px;
+    overflow: hidden;
+}
+</style>
