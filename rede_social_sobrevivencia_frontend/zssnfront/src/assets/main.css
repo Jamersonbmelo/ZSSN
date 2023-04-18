@@ -1,3 +1,11 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body{
+  background-image: url('banner.png');
+}
 .app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6,16 +14,16 @@
   align-items: center;
   display: flex;
   text-align: center;
-  color: #2c3e50;
+  color: #000000;
   margin-top: 30px;
 }
 
 .content {
-  width: 800px;
+  width: auto;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 10px;
 }
 
 .add_form {
@@ -28,7 +36,7 @@
   width: 60%;
   margin: 20px auto;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ebe6e6;
   border-radius: 5px;
 }
 
@@ -36,10 +44,10 @@
 .add_form button {
   margin-top: 10px;
   padding: 10px 20px;
-  background-color: rgb(47, 0, 189);
+  background-color: rgb(240, 5, 5);
   border: none;
   border-radius: 5px;
-  color: white;
+  color: rgb(240, 238, 238);
   font-size: 14px;
   cursor: pointer;
   margin-bottom: 20px;
@@ -48,7 +56,7 @@
 .list_content {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 10;
 }
 
 .list_content li {
@@ -73,8 +81,8 @@
 }
 
 .list_content li button {
-  height: 35px;
-  background-color: rgb(231, 89, 6);;
+  height: 15px;
+  background-color: rgb(231, 89, 6);
   border: none;
   padding: 10px 20px;
   border-radius: 3px;
@@ -105,16 +113,18 @@
 .list button {
   border: none;
   border-radius: 4px;
+  margin-top: .3rem;
   cursor: pointer;
   padding: 8px 12px;
   font-size: 10px;
   font-weight: bold;
   color: white;
-  background-color: #333;
+  background-color: #ce0404;
   transition: all 0.3s ease;
 }
 
 .list button:hover {
+  background-color:rgb(5, 5, 5);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }

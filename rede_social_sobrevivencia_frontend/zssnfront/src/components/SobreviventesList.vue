@@ -33,7 +33,7 @@
                     <td>{{ sobrevivente.sexo }}</td>
                     <td>{{ sobrevivente.latitude }}</td>
                     <td>{{ sobrevivente.longitude }}</td>
-                    <input type="checkbox" v-model="sobrevivente.infectado" />
+                    <input class="checkbox" type="checkbox" v-model="sobrevivente.infectado" />
                     <template v-if="sobrevivente.items.length">
                         <td>
                             <div v-for="item in sobrevivente.items">{{ item.nome }}:{{ item.pontos }} pontos</div>
@@ -156,29 +156,36 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    text-align:center;
 }
-
 td,
 th {
     border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+    text-align: center;
+    padding: 6px;
+}
+.checkbox {
+    cursor:pointer;
+    padding: 10px;
+    width: 80px;
+    margin-top: 50px;
+    display: inherit;
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #cf5454;
 }
 
 table {
     border: 1px solid black;
     table-layout: fixed;
-    width: 200px;
+    width: 100px;
 }
 
 th,
 td {
     border: 1px solid black;
-    width: 100px;
+    width: 200px;
     overflow: hidden;
 }
 </style>
