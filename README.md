@@ -27,4 +27,4 @@ Projeto em andamento, não consegui concluir por completo o projeto.
 Você pode acessar os arquivos do projeto clicando [aqui](https://github.com/Jamersonbmelo/ZSSN).
 
 ## 📁 Acesso à pagina na web:
-Você pode acessar os arquivos do projeto clicando [aqui](https://jamersonbmelo.github.io//).
+Você pode acessar os arquivos do projeto clicando [aqui](https://jamersonbmelo.github.io/zssn/).
